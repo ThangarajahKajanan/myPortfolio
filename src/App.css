@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+
+/*,   border-bottom: 0.5px solid rgb(212, 217, 219); */
+.header-content {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(3px);
+  min-height: 60px;
+}
+
+.logo {
+  letter-spacing: -4px;
+  padding : 7px 0px 7px 0px;
+}
+
+
+.nav_link {
+  color : rgba(0, 0, 0, 0.65);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.4s;
+ 
+}
+
+.nav_link:hover {
+  font-size: 16px;
+  @apply text-fuchsia-700;
+
+}
+
+.btn_contact {
+  @apply bg-fuchsia-700 text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] rounded-md uppercase font-semibold tracking-wide 
+
+}
+
+
+.bg_body{
+    background-color: #eaeff3;
+
+}
+
+.body_content{
+  padding-top: 80px;
+  margin-top: 60px;
+}
+
+  .hero-section {
+    height: calc(100vh); /* Adjusts for the height of the fixed header */
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .gradient_look {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500;
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
