@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import AOS from 'aos';
 
@@ -8,8 +8,6 @@ const Contact = () => {
   }, []);
 
   const form = useRef();
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validateForm = () => {
     const formErrors = {};
@@ -44,27 +42,20 @@ const Contact = () => {
           () => {
             console.log("SUCCESS!");
             form.current.reset();
-            setErrors({});
-            setIsSubmitted(true);
           },
           (error) => {
             console.log("FAILED...", error.text);
           }
         );
-    } else {
-      setErrors(formErrors);
-      setIsSubmitted(false);
     }
   };
 
-
-
   return (
     <section id="Contact"  >
-      <div  className="container max-w-screen-2xl px-0 py-24 sm:px-6 lg:px-16  xl:px-24 mx-auto ">
+      <div className="container max-w-screen-2xl px-0 py-24 sm:px-6 lg:px-16 xl:px-24 mx-auto ">
         <div className="lg:flex lg:items-center lg:-mx-0">
           <div data-aos="flip-left" className="px-8 lg:px-0 lg:w-1/2 lg:mx-6 ">
-            <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl  bg-cover bg-clip-text  bg-center text-transparent antialiased  "  style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}     >
+            <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl bg-cover bg-clip-text bg-center text-transparent antialiased" style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}>
               Contact Me for more info
             </h1>
 
@@ -72,7 +63,7 @@ const Contact = () => {
               <p className="flex items-start -mx-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-2  text-primaryC"
+                  className="w-6 h-6 mx-2 text-primaryC"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -119,7 +110,7 @@ const Contact = () => {
               <p className="flex items-start -mx-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 mx-2 text-primaryC "
+                  className="w-6 h-6 mx-2 text-primaryC"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -139,29 +130,28 @@ const Contact = () => {
             </div>
           </div>
 
-          <div  className="mt-8 lg:my-8 lg:w-1/2 lg:mx-6">
-            <div data-aos="fade-up" data-aos-duration="1500"  className="w-full px-8 py-10 mx-auto overflow-hidden  rounded-lg  sm:border sm:border-fuchsia-100 sm:shadow-md  lg:max-w-xl   ">
+          <div className="mt-8 lg:my-8 lg:w-1/2 lg:mx-6">
+            <div data-aos="fade-up" data-aos-duration="1500" className="w-full px-8 py-10 mx-auto overflow-hidden rounded-lg sm:border sm:border-fuchsia-100 sm:shadow-md lg:max-w-xl">
               <h1 className="text-lg font-medium text-gray-700">
                 Interested in Collaborating or Have Questions?
               </h1>
 
-
               <form className="mt-6" ref={form} onSubmit={sendEmail}>
                 <div className="flex-1">
-                  <label htmlFor="fullname" className="block mb-2 text-sm text-gray-600 ">
+                  <label htmlFor="fullname" className="block mb-2 text-sm text-gray-600">
                     Full Name
                   </label>
                   <input
                     type="text"
                     name="fullname"
                     id="fullname"
-                    placeholder="Yuvan Shankar "
+                    placeholder="Yuvan Shankar"
                     className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:border-purple-400 focus:ring-0 focus:outline-none"
                   />
                 </div>
 
                 <div className="flex-1 mt-6">
-                  <label htmlFor="email" className="block mb-2 text-sm text-gray-600 ">
+                  <label htmlFor="email" className="block mb-2 text-sm text-gray-600">
                     Email address
                   </label>
                   <input
@@ -169,18 +159,18 @@ const Contact = () => {
                     name="email"
                     id="email"
                     placeholder="yuvan@example.com"
-                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:outline-none  focus:border-purple-400 focus:ring-0 "
+                    className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-purple-400 focus:ring-0"
                   />
                 </div>
 
                 <div className="w-full mt-6">
-                  <label htmlFor="message" className="block mb-2 text-sm text-gray-600 ">
+                  <label htmlFor="message" className="block mb-2 text-sm text-gray-600">
                     Message
                   </label>
                   <textarea
                     name="message"
                     id="message"
-                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:outline-none  focus:border-purple-400 focus:ring-0"
+                    className="block w-full h-32 px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md md:h-48 focus:outline-none focus:border-purple-400 focus:ring-0"
                     placeholder="Your Message"
                   ></textarea>
                 </div>
@@ -188,12 +178,10 @@ const Contact = () => {
                 <button 
                   type="submit" 
                   value="send" 
-                  className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize rounded-md bg-primaryC transition duration-200 delay-100  ease-in-out hover:opacity-90 ">
+                  className="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize rounded-md bg-primaryC transition duration-200 delay-100 ease-in-out hover:opacity-90">
                   get in touch
                 </button>
               </form>
-
-
             </div>
           </div>
         </div>

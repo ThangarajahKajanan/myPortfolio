@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FaLinkedin, FaGithubSquare, FaFacebookSquare } from "react-icons/fa";
 import TextEffect17 from "./TextHover";
 import { Link } from "react-scroll";

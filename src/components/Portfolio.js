@@ -212,6 +212,7 @@ const PortfolioCard = ({
             <a
               href={buttonHref}
               target="_blank"
+              rel="noreferrer"
               className=" hover:text-white hover:border-primary hover:bg-black inline-block rounded-md border border-stroke  border-gray-300 py-[10px] px-7 text-sm font-medium  transition-all  delay-100 duration-200 ease-in-out "
             >
               {button}
