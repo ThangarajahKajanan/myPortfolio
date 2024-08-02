@@ -619,7 +619,7 @@ const AboutMe = () => {
                         <div  data-aos="fade-up" data-aos-duration="1500"  className="w-full px-4 lg:w-1/2 xl:w-5/12">
                             <div   className="mt-10 lg:mt-0">
                         
-                                <span className="block mb-4 text-2xl lg:text-3xl font-semibold  bg-cover bg-clip-text  bg-center text-transparent antialiased  "  style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}  >
+                                <span  data-aos="zoom-in" data-aos-duration="1500" className="block mb-4 text-2xl lg:text-3xl font-semibold  bg-cover bg-clip-text  bg-center text-transparent antialiased  "  style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}  >
                                     About me
                                 </span>
                                 <p  className="mb-5 text-base text-body-color ">
@@ -639,7 +639,7 @@ const AboutMe = () => {
                                     smooth={true} 
                                     duration={500} 
                                     offset={-80} //
-                                    className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-center text-base font-medium  text-whiteC  bg-primaryC lg:px-7 transition duration-200 delay-100  ease-in-out hover:opacity-90  ">
+                                    className="inline-flex cursor-pointer items-center justify-center rounded-md bg-primary px-6 py-3 text-center text-base font-medium  text-whiteC  bg-primaryC lg:px-7 transition duration-200 delay-100  ease-in-out hover:opacity-90  ">
                                         Contact me
                                 </Link>
                             </div>

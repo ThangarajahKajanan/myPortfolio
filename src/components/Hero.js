@@ -26,7 +26,7 @@ const Hero = () => {
                 <p className="mb-8 max-w-[480px] text-base text-body-color  tracking-wide ">
                 Passionate about transforming <span className="">innovative ideas</span> into meaningful results - excited to bring my creativity, enthusiasm, and skills to your team and make a real impact <span className=" text-amber-500 hover:text-violet-500">together!</span> 
                 </p>
-                <ul className="flex flex-wrap items-center">
+                <ul className="flex flex-wrap items-center cursor-pointer">
                   <li>
                     <Link
                       to="AboutMe"

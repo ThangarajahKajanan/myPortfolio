@@ -22,7 +22,7 @@ const Footer = () => {
             smooth={true} 
             duration={500} 
             offset={0} //
-            className="mt-8 lg:mt-10 inline-block rounded-lg border border-primaryC px-12 py-3 text-sm lg:text-base font-medium text-primaryC hover:bg-primaryC hover:text-white  transition-colors duration-300 transform  ">
+            className="mt-8 lg:mt-10 cursor-pointer inline-block rounded-lg border border-primaryC px-12 py-3 text-sm lg:text-base font-medium text-primaryC hover:bg-primaryC hover:text-white  transition-colors duration-300 transform  ">
               Hire me
           </Link>
 

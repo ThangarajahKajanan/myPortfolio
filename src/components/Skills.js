@@ -202,12 +202,12 @@ const Skills = () => {
 
   return (
     <section className="bg-gray-50">
-      <div   className="container max-w-screen-2xl px-6 py-24 md:px-10 md:py-28 lg:px-16  xl:px-24 mx-auto overflow-hidden">
-        <h1 className="text-2xl font-semibold text-gray-800 lg:text-3xl   bg-cover bg-clip-text  bg-center text-transparent antialiased "  style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}  >
+      <div    className="container max-w-screen-2xl px-6 py-24 md:px-10 md:py-28 lg:px-16  xl:px-24 mx-auto overflow-hidden">
+        <h1 data-aos="zoom-in" data-aos-duration="1500"  className="text-2xl font-semibold text-gray-800 lg:text-3xl   bg-cover bg-clip-text  bg-center text-transparent antialiased "  style={{ backgroundImage: "url(https://media.giphy.com/media/xTiTniuHdUjpOlNo1q/source.gif)" }}  >
           Skills
         </h1>
 
-        <div className="mt-8 xl:mt-16 lg:flex lg:-mx-12">
+        <div  className="mt-8 xl:mt-16 lg:flex lg:-mx-12">
           {/* left */}
           <div className="lg:mx-12">
             <h1 className="text-xl font-semibold text-gray-800 ">
@@ -233,7 +233,7 @@ const Skills = () => {
                       : "text-gray-600 "
                   }`}
               >
-                Framework
+                Frameworks
               </button>
               <button
                 onClick={() => setSelectedCategory("database")}
@@ -243,7 +243,7 @@ const Skills = () => {
                       : "text-gray-600 "
                   }`}
               >
-                Database
+                Databases
               </button>
               <button
                 onClick={() => setSelectedCategory("design")}

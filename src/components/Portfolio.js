@@ -1,11 +1,8 @@
-import React, { useState , useEffect} from "react";
-import AOS from 'aos';
+import React, { useState } from "react";
 
 
 const Portfolio = () => {
-  useEffect(() => {
-    AOS.init({ duration: 1500 });
-  }, []);
+
   
   const [showCard, setShowCard] = useState("all");
 
@@ -106,74 +103,75 @@ const Portfolio = () => {
               </ul>
             </div>
           </div>
-          <div className="flex flex-wrap -mx-4">
-          <PortfolioCard
-              ImageHref="/photoes/diabetMockup.jpg"
-              category="Research Project"
-              title="Research Project"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/diabetesPrediction-RP.git"
-              showCard={showCard}
-            />
+          <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="500"  className="flex flex-wrap -mx-4">
+            <PortfolioCard
+                ImageHref="/photoes/diabetMockup.jpg"
+                category="Research Project"
+                title="Research Project"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/diabetesPrediction-RP.git"
+                showCard={showCard}
+                
+              />
 
-            <PortfolioCard
-              ImageHref="/photoes/shoppy.jpg"
-              category="MERN"
-              title="E-commerce"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/Online-E-commerce-System.git"
-              showCard={showCard}
-            />
-            <PortfolioCard
-              ImageHref="/photoes/userProfileMockup.jpg"
-              category="JAVA"
-              title="Profile Management"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/User-Profile-Management-.git"
-              showCard={showCard}
-            />
-      
-            <PortfolioCard
-              ImageHref="/photoes/heroMockup.jpg"
-              category="FRONT-END"
-              title="Hero Section"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/HeroPage.git"
-              showCard={showCard}
-            />
-            <PortfolioCard
-              ImageHref="/photoes/calMock.jpg"
-              category="Design"
-              title="JS Calculator"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/JS_Calculator.git"
-              showCard={showCard}
-            />
-            <PortfolioCard
-              ImageHref="/photoes/cloudMockup.jpg"
-              category="INTERN"
-              title="Laundry Website"
-              button="View on GitHub"
-              buttonHref="#"
-              showCard={showCard}
-            />
-             <PortfolioCard
-              ImageHref="/photoes/DgatewayMockup.jpg"
-              category="INTERN"
-              title="Company Website"
-              button="View on GitHub"
-              buttonHref="https://www.dgatewayin.com/"
-              showCard={showCard}
-            />
+              <PortfolioCard
+                ImageHref="/photoes/shoppy.jpg"
+                category="MERN"
+                title="E-commerce"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/Online-E-commerce-System.git"
+                showCard={showCard}
+              />
+              <PortfolioCard
+                ImageHref="/photoes/userProfileMockup.jpg"
+                category="JAVA"
+                title="Profile Management"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/User-Profile-Management-.git"
+                showCard={showCard}
+              />
+        
+              <PortfolioCard
+                ImageHref="/photoes/heroMockup.jpg"
+                category="FRONT-END"
+                title="Hero Section"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/HeroPage.git"
+                showCard={showCard}
+              />
+              <PortfolioCard
+                ImageHref="/photoes/calMock.jpg"
+                category="Design"
+                title="JS Calculator"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/JS_Calculator.git"
+                showCard={showCard}
+              />
+              <PortfolioCard
+                ImageHref="/photoes/cloudMockup.jpg"
+                category="INTERN"
+                title="Laundry Website"
+                button="View on GitHub"
+                buttonHref="#"
+                showCard={showCard}
+              />
+              <PortfolioCard
+                ImageHref="/photoes/DgatewayMockup.jpg"
+                category="INTERN"
+                title="Company Website"
+                button="View on GitHub"
+                buttonHref="https://www.dgatewayin.com/"
+                showCard={showCard}
+              />
 
-            <PortfolioCard
-              ImageHref="/photoes/userMockup.jpg"
-              category="JAVA"
-              title="Supplier Management"
-              button="View on GitHub"
-              buttonHref="https://github.com/ThangarajahKajanan/Online-User-Management-System-.git"
-              showCard={showCard}
-            />
+              <PortfolioCard
+                ImageHref="/photoes/userMockup.jpg"
+                category="JAVA"
+                title="Supplier Management"
+                button="View on GitHub"
+                buttonHref="https://github.com/ThangarajahKajanan/Online-User-Management-System-.git"
+                showCard={showCard}
+              />
           </div>
       </div>
     </section>
@@ -193,7 +191,7 @@ const PortfolioCard = ({
   return (
     <>
       <div
-        data-aos="fade-up" data-aos-duration="1500"
+       
         className={`w-full px-4 md:w-1/2 xl:w-1/3 ${
           showCard === "all" || showCard === category || showCard === category.toUpperCase()
             ? "block"
