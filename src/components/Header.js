@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ProfileModal from "./ProfileModel";
 import { Link } from "react-scroll";
 
@@ -7,49 +7,29 @@ const Header = ({ heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef }) =>
   const [activeLink, setActiveLink] = useState("Home");
   const [isModalOpen, setModalOpen] = useState(false);
 
-  const sections = [
+  const sections = useMemo(() => [
     { name: "Home", ref: heroRef },
     { name: "About Me", ref: aboutMeRef },
     { name: "Portfolio", ref: portfolioRef },
     { name: "Skills", ref: skillsRef },
     { name: "Contact", ref: contactRef }
-  ];
+  ], [heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef]);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: Array.from(Array(101).keys(), i => i / 100)
-    };
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const intersectingSection = sections.find(
-            (section) => section.ref.current === entry.target
-          );
-          if (intersectingSection) {
-            setActiveLink(intersectingSection.name);
-          }
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i].ref.current;
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveLink(sections[i].name);
+          break;
         }
-      });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-
-    sections.forEach((section) => {
-      if (section.ref.current) {
-        observer.observe(section.ref.current);
       }
-    });
-
-    return () => {
-      sections.forEach((section) => {
-        if (section.ref.current) {
-          observer.unobserve(section.ref.current);
-        }
-      });
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
 
   const handleLinkClick = (event, link, ref) => {
@@ -150,7 +130,7 @@ const Header = ({ heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef }) =>
                 <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
                   <img
                     src="/me.png"
-                    className="object-cover w-full h-full "
+                    className="object-cover w-full h-full"
                     alt="avatar"
                   />
                 </div>
