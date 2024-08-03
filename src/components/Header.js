@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProfileModal from "./ProfileModel";
 import { Link } from "react-scroll";
 
@@ -7,10 +7,55 @@ const Header = ({ heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef }) =>
   const [activeLink, setActiveLink] = useState("Home");
   const [isModalOpen, setModalOpen] = useState(false);
 
+  const sections = [
+    { name: "Home", ref: heroRef },
+    { name: "About Me", ref: aboutMeRef },
+    { name: "Portfolio", ref: portfolioRef },
+    { name: "Skills", ref: skillsRef },
+    { name: "Contact", ref: contactRef }
+  ];
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: Array.from(Array(101).keys(), i => i / 100)
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const intersectingSection = sections.find(
+            (section) => section.ref.current === entry.target
+          );
+          if (intersectingSection) {
+            setActiveLink(intersectingSection.name);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((section) => {
+      if (section.ref.current) {
+        observer.observe(section.ref.current);
+      }
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section.ref.current) {
+          observer.unobserve(section.ref.current);
+        }
+      });
+    };
+  }, [sections]);
+
   const handleLinkClick = (event, link, ref) => {
-    event.preventDefault(); // Prevent default anchor behavior
+    event.preventDefault();
     setActiveLink(link);
-    setIsOpen(false); // Close the mobile menu when a link is clicked
+    setIsOpen(false);
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -22,20 +67,14 @@ const Header = ({ heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef }) =>
     setModalOpen(false);
   };
 
-
   return (
     <nav id="Header" className="fixed top-0 left-0 w-full shadow z-50 bg-white">
-      <div className="container max-w-screen-2xl px-6 py-4 md:px-10  lg:px-16 xl:px-24 mx-auto">
+      <div className="container max-w-screen-2xl px-6 py-4 md:px-10 lg:px-16 xl:px-24 mx-auto">
         <div className="md:flex md:items-center md:justify-between">
           <div className="flex items-center justify-between">
-            <Link
-               to="Hero"
-               smooth={true} 
-               duration={500} 
-               offset={-80} //
-              >
+            <Link to="Hero" smooth={true} duration={500} offset={-80}>
               <button>
-              <h1 className="font-semibold text-primaryC text-2xl ">KT</h1>
+                <h1 className="font-semibold text-primaryC text-2xl">KT</h1>
               </button>
             </Link>
             <div className="flex md:hidden">
@@ -86,13 +125,7 @@ const Header = ({ heroRef, aboutMeRef, portfolioRef, skillsRef, contactRef }) =>
             }`}
           >
             <div className="flex flex-col -mx-6 md:flex-row md:items-center md:mx-8">
-              {[
-                { name: "Home", ref: heroRef },
-                { name: "About Me", ref: aboutMeRef },
-                { name: "Portfolio", ref: portfolioRef },
-                { name: "Skills", ref: skillsRef },
-                { name: "Contact", ref: contactRef }
-              ].map(({ name, ref }) => (
+              {sections.map(({ name, ref }) => (
                 <button
                   key={name}
                   onClick={(event) => handleLinkClick(event, name, ref)}

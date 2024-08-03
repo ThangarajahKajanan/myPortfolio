@@ -42,11 +42,6 @@ html {
 
 }
 
-.btn_contact {
-  @apply bg-fuchsia-700 text-white text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] rounded-md uppercase font-semibold tracking-wide 
-
-}
-
 
 .bg_body{
     background-color: #eaeff3;
